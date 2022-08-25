@@ -1,0 +1,67 @@
+﻿@page
+@model StudentsModel
+@{
+    ViewData["Title"] = "Students List";
+}
+
+<h3 class="text-center mb-4">@ViewData["Title"]</h3>
+
+<form>
+    <p>
+        Search Students: <input type="text" placeholder="Type a name" asp-for="SearchText" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+
+<div class="container border" style="padding:20px">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Class
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Age
+                </th>
+                <th>
+                    Roll Number
+                </th>
+                <th>
+                    Sex
+                </th>
+                <th>
+                    Image
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Student student in Model.Students ?? new())
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => student.Class)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => student.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => student.Age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => student.RollNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => student.Sex)
+                    </td>
+                    <td>
+                        <img src="data:image/jpg;base64, @student.Image" width="50">
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

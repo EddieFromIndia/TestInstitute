@@ -1,0 +1,53 @@
+﻿@page
+@model TeachersModel
+@{
+    ViewData["Title"] = "Teachers List";
+}
+
+<h3 class="text-center mb-4">@ViewData["Title"]</h3>
+<div class="container border" style="padding:20px">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Age
+                </th>
+                <th>
+                    Sex
+                </th>
+                <th>
+                    Image
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Teacher teacher in Model.Teachers ?? new())
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => teacher.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => teacher.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => teacher.Age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => teacher.Sex)
+                    </td>
+                    <td>
+                        <img src="data:image/jpg;base64, @teacher.Image" width="50">
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,54 @@
+﻿@page
+@model AddSubjectModel
+@{
+    ViewData["Title"] = "Add New Subject";
+}
+
+<h3 class="text-center mb-4">@ViewData["Title"]</h3>
+<div class="container border" style="padding:20px">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row mb-2">
+            <div class="col-2">
+                <label asp-for="Subject.Name"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="Subject.Name" class="form-control" />
+            </div>
+            <span class="col-5 text-danger" asp-validation-for="Subject.Name"></span>
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-2">
+                <label asp-for="Subject.Class"></label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="Subject.Class" class="form-control" />
+            </div>
+            <span class="col-5 text-danger" asp-validation-for="Subject.Class"></span>
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-2">
+                <label asp-for="Languages">Languages<br/>(comma separated: English,Spanish)</label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="Languages" class="form-control" />
+            </div>
+            <span class="col-5 text-danger" asp-validation-for="Languages"></span>
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-2">
+                <label asp-for="Subject.Teacher"></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="SelectedTeacher" asp-items="new SelectList(@Model.Teachers, nameof(Teacher.Id), nameof(Teacher.Name))">
+                    <option value="">Select a teacher</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Save" />
+            </div>
+        </div>
+    </form>
+</div>
